@@ -149,9 +149,26 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Porta ${PORT} já está em uso.`);
+  } else {
+    console.error('Erro no servidor:', err);
+  }
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
 server.listen(PORT, () => {
   console.log(`\n=============================================================`);
   console.log(`🚀 Painel de Avaliação da Stack IA 2026 Ativo!`);
   console.log(`🌐 Acesse no seu navegador: http://localhost:${PORT}`);
   console.log(`=============================================================\n`);
 });
+
