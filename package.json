@@ -1,0 +1,20 @@
+{
+  "name": "stack-ia-2026-benchmark",
+  "version": "1.0.0",
+  "description": "Implementação prática e suíte de testes comparativos da metodologia 'Stack Perfeita de IA em 2026' (Felipe Tâmbara)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "benchmark": "node 05_benchmark/benchmark_engine.js"
+  },
+  "keywords": [
+    "ai-stack",
+    "obsidian",
+    "maestri",
+    "claude-code",
+    "n8n",
+    "benchmark"
+  ],
+  "author": "Antigravity & Pedro",
+  "license": "MIT"
+}

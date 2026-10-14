@@ -1,0 +1,42 @@
+[
+  {
+    "id": "case_01",
+    "title": "Micro-SaaS: Webhook Resiliente com Idempotência",
+    "description": "Construir um módulo de webhook para pagamentos que valide HMAC, garanta idempotência com Idempotency-Key e responda com HTTP 200 imediato.",
+    "complexity": "Alta",
+    "domain": "Desenvolvimento de Software",
+    "strict_requirements": [
+      "Validação de assinatura HMAC do gateway",
+      "Garantia de idempotência (rejeitar ou ignorar duplicados)",
+      "Resposta imediata HTTP 200 para evitar timeout",
+      "Sanitização completa do payload",
+      "Isolamento modular do código"
+    ]
+  },
+  {
+    "id": "case_02",
+    "title": "Automação Operacional: n8n + WhatsApp (Evolution API)",
+    "description": "Criar um pipeline de notificação automática de novos pedidos disparando webhook no n8n e mensagem no WhatsApp via Evolution API.",
+    "complexity": "Média",
+    "domain": "Automação e Negócios",
+    "strict_requirements": [
+      "Sanitização e validação de formato de número de telefone (E.164)",
+      "Tratamento de timeout e fila de retry",
+      "Não expor token secreto da Evolution API em logs",
+      "Confirmação de recebimento"
+    ]
+  },
+  {
+    "id": "case_03",
+    "title": "Auditoria de Segurança & Refatoração Crítica (Claudex Pattern)",
+    "description": "Inspecionar código legado de autenticação buscando vulnerabilidades de injeção, memory leaks e falta de sanitização.",
+    "complexity": "Muito Alta",
+    "domain": "Segurança e Qualidade",
+    "strict_requirements": [
+      "Detecção e eliminação de SQL Injection",
+      "Prevenção de credenciais em texto puro",
+      "Verificação de limites de rate limit",
+      "Relatório detalhado de vulnerabilidades com status binário"
+    ]
+  }
+]

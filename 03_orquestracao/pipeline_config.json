@@ -1,0 +1,51 @@
+{
+  "name": "Pipeline Orquestrado Estilo Maestri 2026",
+  "version": "1.0.0",
+  "stages": [
+    {
+      "stage_id": "planejamento",
+      "role": "Planner & Architect",
+      "skill_required": "skill-architect",
+      "model_type": "high-reasoning",
+      "recommended_model": "Claude 3.7 Sonnet / Gemini Pro",
+      "cost_per_million_input": 3.00,
+      "cost_per_million_output": 15.00,
+      "max_retries": 2
+    },
+    {
+      "stage_id": "codificacao",
+      "role": "Senior Implementer",
+      "skill_required": "skill-coder",
+      "model_type": "fast-coder",
+      "recommended_model": "Claude Code / GPT-4o / Gemini Flash",
+      "cost_per_million_input": 0.50,
+      "cost_per_million_output": 2.00,
+      "max_retries": 3
+    },
+    {
+      "stage_id": "auditoria_claudex",
+      "role": "Security & Quality Auditor",
+      "skill_required": "skill-auditor",
+      "model_type": "independent-evaluator",
+      "recommended_model": "Codex / Claude 3.5 Sonnet",
+      "cost_per_million_input": 1.50,
+      "cost_per_million_output": 7.50,
+      "max_retries": 2
+    },
+    {
+      "stage_id": "execucao_bracos",
+      "role": "Integration & DevOps",
+      "skill_required": "skill-integrator-bracos",
+      "model_type": "tool-operator",
+      "recommended_model": "Antigravity CLI / Local Runner",
+      "cost_per_million_input": 0.15,
+      "cost_per_million_output": 0.60,
+      "max_retries": 1
+    }
+  ],
+  "cross_review_policy": {
+    "enabled": true,
+    "max_audit_loops": 3,
+    "auto_rollback_on_failure": true
+  }
+}

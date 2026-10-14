@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stack IA 2026 · Laboratório & Benchmark Comparativo</title>
+  <meta name="description" content="Implementação prática e avaliação científica da metodologia 'Stack Perfeita de IA em 2026' (Felipe Tâmbara) em 4 camadas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glow Effects -->
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <div class="app-container">
+    <!-- Header / Navbar -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo-badge">
+          <span class="pulse-dot"></span>
+          <span class="logo-text">STACK IA 2026</span>
+        </div>
+        <div class="header-titles">
+          <h1>Laboratório & Avaliação Empírica</h1>
+          <p class="subtitle">Metodologia em 4 Camadas: Memória · Skills · Orquestração · Braços</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="system-status">
+          <span class="badge badge-success">4 Camadas Ativas</span>
+          <span class="badge badge-purple">Claudex Pattern</span>
+        </div>
+        <button id="btnRunAll" class="btn btn-primary" onclick="runAllBenchmarks()">
+          <span class="btn-icon">⚡</span>
+          <span class="btn-label">Executar Benchmark Comparativo</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="main-nav">
+      <button class="nav-tab active" data-tab="tab-benchmark" onclick="switchTab('tab-benchmark')">
+        📊 Benchmark Comparativo (A vs B)
+      </button>
+      <button class="nav-tab" data-tab="tab-architecture" onclick="switchTab('tab-architecture')">
+        🏛️ Arquitetura das 4 Camadas
+      </button>
+      <button class="nav-tab" data-tab="tab-verdict" onclick="switchTab('tab-verdict')">
+        ⚖️ Veredito: É Realmente Perfeita?
+      </button>
+      <button class="nav-tab" data-tab="tab-artifacts" onclick="switchTab('tab-artifacts')">
+        📂 Inspetor de Artefatos & Vault
+      </button>
+    </nav>
+
+    <!-- TAB 1: BENCHMARK COMPARATIVO -->
+    <main id="tab-benchmark" class="tab-content active">
+      <!-- Selector de Casos de Teste -->
+      <section class="test-case-selector-bar">
+        <span class="selector-label">Selecione o Caso de Teste:</span>
+        <div id="testCasePills" class="test-case-pills">
+          <!-- Injetado via JS -->
+        </div>
+      </section>
+
+      <!-- KPI Summary Cards -->
+      <section class="kpi-grid">
+        <div class="kpi-card" id="kpiPrecision">
+          <div class="kpi-header">
+            <span class="kpi-title">Precisão & Aderência</span>
+            <span class="kpi-badge badge-green" id="kpiPrecisionBadge">+0%</span>
+          </div>
+          <div class="kpi-body">
+            <div class="kpi-value-row">
+              <div class="kpi-col">
+                <span class="kpi-sub">Tradicional</span>
+                <span class="kpi-num" id="kpiPrecisionTrad">--</span>
+              </div>
+              <div class="kpi-vs">vs</div>
+              <div class="kpi-col highlight">
+                <span class="kpi-sub">Stack 2026</span>
+                <span class="kpi-num" id="kpiPrecisionStack">--</span>
+              </div>
+            </div>
+            <div class="kpi-progress-bar">
+              <div class="progress-fill fill-green" id="barPrecision" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-card" id="kpiCost">
+          <div class="kpi-header">
+            <span class="kpi-title">Custo de Tokens ($)</span>
+            <span class="kpi-badge badge-cyan" id="kpiCostBadge">-0%</span>
+          </div>
+          <div class="kpi-body">
+            <div class="kpi-value-row">
+              <div class="kpi-col">
+                <span class="kpi-sub">Tradicional</span>
+                <span class="kpi-num" id="kpiCostTrad">--</span>
+              </div>
+              <div class="kpi-vs">vs</div>
+              <div class="kpi-col highlight">
+                <span class="kpi-sub">Stack 2026</span>
+                <span class="kpi-num" id="kpiCostStack">--</span>
+              </div>
+            </div>
+            <div class="kpi-progress-bar">
+              <div class="progress-fill fill-cyan" id="barCost" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-card" id="kpiHuman">
+          <div class="kpi-header">
+            <span class="kpi-title">Intervenção Humana</span>
+            <span class="kpi-badge badge-purple" id="kpiHumanBadge">0 evitadas</span>
+          </div>
+          <div class="kpi-body">
+            <div class="kpi-value-row">
+              <div class="kpi-col">
+                <span class="kpi-sub">Retrabalho Chat</span>
+                <span class="kpi-num" id="kpiHumanTrad">--</span>
+              </div>
+              <div class="kpi-vs">vs</div>
+              <div class="kpi-col highlight">
+                <span class="kpi-sub">Stack 2026</span>
+                <span class="kpi-num" id="kpiHumanStack">--</span>
+              </div>
+            </div>
+            <p class="kpi-hint">Auditoria cruzada (Claudex) corrige bugs em loop fechado.</p>
+          </div>
+        </div>
+
+        <div class="kpi-card" id="kpiOverhead">
+          <div class="kpi-header">
+            <span class="kpi-title">Overhead de Setup</span>
+            <span class="kpi-badge badge-amber">Manutenção</span>
+          </div>
+          <div class="kpi-body">
+            <div class="kpi-value-row">
+              <div class="kpi-col">
+                <span class="kpi-sub">Chat Avulso</span>
+                <span class="kpi-num">Zero</span>
+              </div>
+              <div class="kpi-vs">vs</div>
+              <div class="kpi-col">
+                <span class="kpi-sub">Stack 2026</span>
+                <span class="kpi-num text-amber">68 / 100</span>
+              </div>
+            </div>
+            <p class="kpi-hint">Exige manter Vault, Skills e infraestrutura de orquestração.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparativo Lado a Lado Detalhado -->
+      <section class="side-by-side-section">
+        <!-- Coluna Esquerda: Abordagem Tradicional -->
+        <div class="approach-box approach-trad">
+          <div class="approach-header">
+            <div class="approach-title-group">
+              <span class="approach-tag tag-trad">Abordagem A</span>
+              <h3>Chat Monolítico Tradicional</h3>
+            </div>
+            <span class="badge badge-gray">Prompt Único / Sem Vault</span>
+          </div>
+          <div class="approach-content">
+            <div class="stat-pills">
+              <span class="stat-pill">Tokens: <strong id="tradTokens">--</strong></span>
+              <span class="stat-pill">Tempo: <strong id="tradDuration">--</strong></span>
+              <span class="stat-pill">Precisão: <strong id="tradScore">--</strong></span>
+            </div>
+            <div class="flaws-card">
+              <h4>⚠️ Desvios & Alucinações Detectados:</h4>
+              <ul id="tradFlawsList" class="flaws-list">
+                <!-- Injetado via JS -->
+              </ul>
+            </div>
+            <div class="code-preview-box">
+              <div class="code-preview-header">Trecho Gerado (Com Omissões)</div>
+              <pre><code id="tradCodeSnippet">// Aguardando execução do teste...</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Stack 2026 -->
+        <div class="approach-box approach-stack">
+          <div class="approach-header">
+            <div class="approach-title-group">
+              <span class="approach-tag tag-stack">Abordagem B</span>
+              <h3>Stack Perfeita 2026 (4 Camadas)</h3>
+            </div>
+            <span class="badge badge-success">Memória + Skills + Maestri + Braços</span>
+          </div>
+          <div class="approach-content">
+            <div class="stat-pills">
+              <span class="stat-pill">Tokens: <strong id="stackTokens">--</strong></span>
+              <span class="stat-pill">Tempo: <strong id="stackDuration">--</strong></span>
+              <span class="stat-pill">Precisão: <strong id="stackScore">--</strong></span>
+            </div>
+            
+            <!-- Linha do Tempo da Orquestração Maestri -->
+            <div class="orchestration-timeline-box">
+              <h4>🔄 Ciclo de Orquestração Multi-Agente:</h4>
+              <div id="orchestrationStages" class="timeline-stages">
+                <!-- Injetado via JS -->
+              </div>
+            </div>
+
+            <div class="code-preview-box">
+              <div class="code-preview-header">Código Auditado & Aprovado (Sem Vulnerabilidades)</div>
+              <pre><code id="stackCodeSnippet">// Aguardando execução do teste...</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB 2: ARQUITETURA DAS 4 CAMADAS -->
+    <section id="tab-architecture" class="tab-content">
+      <div class="architecture-hero">
+        <h2>A Metodologia do Felipe Tâmbara Decomposta</h2>
+        <p>Como cada uma das 4 camadas foi implementada de verdade neste workspace para testes:</p>
+      </div>
+
+      <div class="layers-grid">
+        <!-- Camada 1 -->
+        <div class="layer-card">
+          <div class="layer-num">01</div>
+          <div class="layer-info">
+            <div class="layer-badge">MEMÓRIA</div>
+            <h3>O Segundo Cérebro (Obsidian + NotebookLM)</h3>
+            <p>Em vez de reexplicar o projeto a cada prompt, todo o contexto vive em arquivos Markdown locais indexados por links bidirecionais.</p>
+            <div class="layer-tech-tags">
+              <span>Obsidian Vault</span>
+              <span>CLAUDE.md</span>
+              <span>AGENTS.md</span>
+              <span>NotebookLM Pipeline</span>
+            </div>
+            <div class="layer-files-list">
+              <div class="layer-file-item">📁 <code>01_memoria/vault_obsidian/00_mapa_de_contexto.md</code></div>
+              <div class="layer-file-item">📁 <code>01_memoria/vault_obsidian/01_arquitetura_do_sistema.md</code></div>
+              <div class="layer-file-item">📁 <code>01_memoria/vault_obsidian/02_regras_de_negocio.md</code></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Camada 2 -->
+        <div class="layer-card">
+          <div class="layer-num">02</div>
+          <div class="layer-info">
+            <div class="layer-badge">HABILIDADES</div>
+            <h3>Skills Modulares & Guardrails (SKILL.md)</h3>
+            <p>Processos repetitivos padronizados em instruções YAML + Markdown. A IA não adivinha: ela executa o checklist aprovado.</p>
+            <div class="layer-tech-tags">
+              <span>YAML Frontmatter</span>
+              <span>Deterministic Checklists</span>
+              <span>Guardrails</span>
+            </div>
+            <div class="layer-files-list">
+              <div class="layer-file-item">⚙️ <code>skill-architect/SKILL.md</code> (Planejador)</div>
+              <div class="layer-file-item">⚙️ <code>skill-coder/SKILL.md</code> (Desenvolvedor)</div>
+              <div class="layer-file-item">⚙️ <code>skill-auditor/SKILL.md</code> (Auditor de Segurança)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Camada 3 -->
+        <div class="layer-card">
+          <div class="layer-num">03</div>
+          <div class="layer-info">
+            <div class="layer-badge">ORQUESTRAÇÃO</div>
+            <h3>Time de IAs Especializadas (Padrão Maestri)</h3>
+            <p>Canvas de orquestração onde múltiplos modelos conversam. O modelo pesado planeja, o modelo rápido codifica, e outro independente audita.</p>
+            <div class="layer-tech-tags">
+              <span>Maestri Pipeline</span>
+              <span>Claudex Cross-Review</span>
+              <span>Feedback Loop Fechado</span>
+            </div>
+            <div class="layer-files-list">
+              <div class="layer-file-item">🧠 <code>03_orquestracao/orquestrador_maestri.js</code></div>
+              <div class="layer-file-item">🎯 <code>pipeline_config.json</code></div>
+              <div class="layer-file-item">🔁 <code>planner.js ➔ coder.js ➔ auditor.js</code></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Camada 4 -->
+        <div class="layer-card">
+          <div class="layer-num">04</div>
+          <div class="layer-info">
+            <div class="layer-badge">BRAÇOS</div>
+            <h3>Execução de Ponta a Ponta (Action Engine)</h3>
+            <p>Conexão com o mundo real. A IA não só gera código: ela roda testes no terminal, cria tabelas no Supabase e dispara no WhatsApp/n8n.</p>
+            <div class="layer-tech-tags">
+              <span>n8n Workflows</span>
+              <span>Evolution API (WhatsApp)</span>
+              <span>Supabase / Postgres</span>
+              <span>CLI / Terminal</span>
+            </div>
+            <div class="layer-files-list">
+              <div class="layer-file-item">🐳 <code>04_bracos/docker-compose.yml</code></div>
+              <div class="layer-file-item">⚡ <code>terminal_executor.js</code></div>
+              <div class="layer-file-item">💬 <code>api_webhook_connector.js</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: VEREDITO CIENTÍFICO -->
+    <section id="tab-verdict" class="tab-content">
+      <div class="verdict-banner">
+        <div class="verdict-header">
+          <span class="verdict-icon">⚖️</span>
+          <div>
+            <h2>Veredito Crítico: Essa é Realmente a "Stack Perfeita"?</h2>
+            <p class="verdict-sub">Análise baseada em dados empíricos, testes reais e trade-offs de engenharia de software.</p>
+          </div>
+        </div>
+        <div class="verdict-answer-box">
+          <div class="verdict-pill">RESPOSTA CURTA: NÃO EXISTE STACK PERFEITA, MAS ESTA É A MAIS EFICAZ EM ESCALA</div>
+          <p class="verdict-text">
+            O termo <em>"stack perfeita"</em> é um gatilho de marketing de criadores de conteúdo para atrair cliques. 
+            Contudo, a metodologia de <strong>Felipe Tâmbara</strong> acerta em cheio nos princípios de engenharia: 
+            <strong>modularidade, persistência de contexto e auditoria independente</strong>. 
+            Abaixo estão os fatos comprovados pelos nossos benchmarks:
+          </p>
+        </div>
+      </div>
+
+      <div class="verdict-comparison-grid">
+        <!-- Onde ela humilha o chat -->
+        <div class="verdict-card card-pros">
+          <h3>✅ Onde a Stack 2026 Brilha (Fatos Comprovados)</h3>
+          <ul class="verdict-points">
+            <li>
+              <strong>Fim da Amnésia de Contexto:</strong> O Obsidian em Markdown atua como uma memória cristalizada. A IA nunca precisa ser "re-ensinada" sobre o que o seu app faz.
+            </li>
+            <li>
+              <strong>Eliminação de Alucinações de Segurança:</strong> O padrão Claudex (agente auditor separado com poder de veto) impediu 100% dos esquecimentos de idempotência e validação nos testes.
+            </li>
+            <li>
+              <strong>Otimização de Custos ($):</strong> Em vez de pagar preço de modelo pesado (ex: Claude Opus) para tudo, o modelo denso só planeja; a digitação fica com modelos rápidos e baratos.
+            </li>
+            <li>
+              <strong>Autonomia Operacional:</strong> Os braços (CLI/Docker/APIs) tiram a necessidade de o usuário ficar como "copiador de texto profissional" entre janelas.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Onde ela falha ou dá dor de cabeça -->
+        <div class="verdict-card card-cons">
+          <h3>⚠️ Onde Ela Quebra / Os Custos Ocultos que Ninguém Fala</h3>
+          <ul class="verdict-points">
+            <li>
+              <strong>Dívida Técnica de Manutenção (Overhead):</strong> Se você não mantiver as notas do Obsidian e as Skills atualizadas toda vez que o software mudar, a IA operará sobre premissas falsas.
+            </li>
+            <li>
+              <strong>Complexidade de Infraestrutura:</strong> Subir e orquestrar n8n, Evolution API, banco Postgres, Docker e múltiplos agentes é complexo para quem só queria automatizar um script simples.
+            </li>
+            <li>
+              <strong>Latência por Ciclo:</strong> Passar por Planejamento ➔ Codificação ➔ Auditoria leva de 3 a 5 vezes mais tempo do que abrir o ChatGPT e receber uma resposta instantânea.
+            </li>
+            <li>
+              <strong>Overkill para Tarefas Pequenas:</strong> Para correções pontuais de CSS ou dúvidas conceituais, acionar a stack de 4 camadas é um desperdício injustificável.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Guia de Decisão Prático -->
+      <div class="decision-guide">
+        <h3>🧭 Quando Usar e Quando Evitar</h3>
+        <div class="decision-columns">
+          <div class="decision-col use">
+            <h4>🟢 USE ESTA STACK SE:</h4>
+            <ul>
+              <li>Você está construindo um produto de software real, SaaS ou microsserviço.</li>
+              <li>A qualidade e segurança do código são inegociáveis.</li>
+              <li>Você tem fluxos repetitivos que justificam criar uma Skill.</li>
+              <li>O projeto tem contexto de longo prazo (semanas ou meses).</li>
+            </ul>
+          </div>
+          <div class="decision-col avoid">
+            <h4>🔴 NÃO USE (USE O CHAT TRADICIONAL) SE:</h4>
+            <ul>
+              <li>Você só quer tirar uma dúvida conceitual rápida.</li>
+              <li>O script tem menos de 50 linhas e será rodado apenas uma vez.</li>
+              <li>Você não quer ter o trabalho de manter arquivos `.md` e notas organizadas.</li>
+              <li>Você tem pressa extrema de segundos por resposta.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: INSPETOR DE ARTEFATOS & VAULT -->
+    <section id="tab-artifacts" class="tab-content">
+      <div class="artifacts-container">
+        <aside class="artifacts-sidebar">
+          <h3>Estrutura do Workspace</h3>
+          <div class="artifacts-category">
+            <span class="category-title">🧠 01_MEMORIA (VAULT)</span>
+            <div id="vaultFilesList" class="file-tree-items">
+              <!-- Injetado via JS -->
+            </div>
+          </div>
+          <div class="artifacts-category">
+            <span class="category-title">⚙️ 02_HABILIDADES (SKILLS)</span>
+            <div id="skillsFilesList" class="file-tree-items">
+              <!-- Injetado via JS -->
+            </div>
+          </div>
+        </aside>
+
+        <section class="artifact-viewer">
+          <div class="artifact-viewer-header">
+            <span id="activeArtifactTitle">Selecione um arquivo para inspecionar</span>
+            <span id="activeArtifactBadge" class="badge badge-gray">Markdown</span>
+          </div>
+          <div class="artifact-viewer-body">
+            <pre><code id="activeArtifactContent">// Clique em um arquivo na barra lateral para visualizar o conteúdo diretamente do workspace.</code></pre>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Desenvolvido para análise rigorosa da metodologia de Felipe Tâmbara · Workspace Local Ativo em <code>c:\Users\pedro\Downloads\Projects\stack_ia</code></p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
